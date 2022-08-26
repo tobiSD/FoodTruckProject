@@ -1,7 +1,7 @@
-#Food Truck Project
+# Food Truck Project
 
-#Details
+# Details
 
-#What i learned
+# What i learned
 
-#Technologies used# FoodTruckProject
+# Technologies used# FoodTruckProject
