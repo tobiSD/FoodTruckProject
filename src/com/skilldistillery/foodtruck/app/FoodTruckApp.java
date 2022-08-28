@@ -6,28 +6,32 @@ import com.skilldistillery.foodtruck.entities.FoodTruck;
 
 public class FoodTruckApp {
 	Scanner kb = new Scanner(System.in);
-	private FoodTruck[] truck;
+	public FoodTruck[] ft;
 
-	int MAX_TRUCKS = 1;
-
-	FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; // change to 5
-	int count =0;
-
+	// main
 	public static void main(String[] args) {
 		FoodTruckApp app = new FoodTruckApp();
 		System.out.println("FoodTruck Rating App");
+
 		app.run();
 
 	}
 
-	private void run() {
+	public void run() {
+
+		int MAX_TRUCKS = 2;
+
+		FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; // change to 5
+		int count = 0;
+		ft[count] = new FoodTruck();
 
 		for (int i = 0; i < ft.length; i++) {
+			ft[i] = new FoodTruck();
 
 			System.out.print("Enter name of food truck: ");
 			String name = kb.next();
-			FoodTruck truck = new FoodTruck();
-			truck.setName(name);
+			FoodTruck truckName = new FoodTruck();
+			ft[i].setName(name);
 
 			if (name == "quit") {
 				// exit
@@ -35,45 +39,66 @@ public class FoodTruckApp {
 				System.out.print("Enter food type: ");
 				String foodType = kb.next();
 				FoodTruck type = new FoodTruck();
-				type.setFoodType(foodType);
+				ft[i].setFoodType(foodType);
 
 				System.out.print("Enter Rating(0-3): ");
 				int rating = kb.nextInt();
-				FoodTruck truck1 = new FoodTruck();
-				truck1.setRating(rating);
-				// after input see the menu
+				FoodTruck rating1 = new FoodTruck();
+				ft[i].setRating(rating);
+
+			}
+
+		}
+		FoodTruckMenu(ft);
+	}
+
+	public void FoodTruckMenu(FoodTruck[] ft) {
+		if (ft[0] == null) {
+			System.out.println("exit");
+		} else {
+			// see menu
+			System.out.println("Choose form the following options:");
+			System.out.println("1. List of all exisitng foodtrucks");
+			System.out.println("2. See the average rating of food trucks. ");
+			System.out.println("3. Display the highest-rated food truck. ");
+			System.out.println("4. Quit the program.");
+			int choice = kb.nextInt();
+			switch (choice) {
+			case 1:
+				listOfTrucks(ft);
+				break;
+			case 2:
+				averageRating(ft);
+				break;
+			case 3:
+				// highest rating
+				break;
+			default:
+				System.out.println("Error");
 			}
 		}
-		FoodTruckMenu();
 	}
 
-	public void FoodTruckMenu() {
-		// see menu
-		System.out.println();
-		System.out.println("Choose form the following options:");
-		System.out.println("1. List of all exisitng foodtrucks");
-		System.out.println("2. See the average rating of food trucks. ");
-		System.out.println("3. Display the highest-rated food truck. ");
-		System.out.println("4. Quit the program.");
-		int choice = kb.nextInt();
-		switch (choice) {
-		case 1:
-			listOfTrucks(truck);
-			break;
-		case 2:
-			// calculate average
-			break;
-		case 3:
-			// highest rating
-			break;
-		default:
-			System.out.println("Error");
+	public void listOfTrucks(FoodTruck[] ft) {
+		for (int i = 0; i < ft.length; i++) {
+			if (ft[i] != null) {
+				System.out.println(ft[i].toString());
+				System.out.println();
+			}
+
 		}
+
 	}
 
-	public void listOfTrucks(FoodTruck[] truck) {
-		for (int i = 0; i < truck.length; i++) {
-			System.out.println(i);
+	public void averageRating(FoodTruck[] ft) {
+		double average = 0;
+		double total = 0;
+
+		for (int i = 0; i < ft.length; i++) {
+			total = total + ft[i].getRating();
+			int x = i + 1;
+			average = total / x;
 		}
+		System.out.println("rating: " + average);
 	}
 }
