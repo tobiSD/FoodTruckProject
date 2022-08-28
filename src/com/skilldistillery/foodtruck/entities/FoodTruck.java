@@ -1,17 +1,20 @@
 package com.skilldistillery.foodtruck.entities;
 
 public class FoodTruck {
-
+	
+	//private fields
 	private int id;
 	private String name;
 	private String foodType;
 	private int rating;
 	
 	
+	//no arg constructor
 	public FoodTruck() {
 		
 	}
 	
+	//Constructor
 	public FoodTruck(int id, String name, String foodType, int rating) {
 		this.id = id;
 		this.setName(name);
@@ -19,6 +22,7 @@ public class FoodTruck {
 		this.setRating(rating);
 	}
 
+	//getters and setters
 	public String getName() {
 		return name;
 	}
@@ -43,12 +47,8 @@ public class FoodTruck {
 		this.rating = rating;
 	}
 
+	public String toString() {
+		return "Name = "+name+ " " +foodType+ " " + rating;
+	}
 	
 }
-
-
-
-//id, name, foddType,rating 1-3
-	//constructors
-	//setter and getter 
-	//tostring
