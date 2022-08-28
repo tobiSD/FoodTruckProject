@@ -47,7 +47,6 @@ public class FoodTruckApp {
 				ft[i].setRating(rating);
 
 			}
-
 		}
 		FoodTruckMenu(ft);
 	}
@@ -71,7 +70,7 @@ public class FoodTruckApp {
 				averageRating(ft);
 				break;
 			case 3:
-				// highest rating
+				higestRated(ft);
 				break;
 			default:
 				System.out.println("Error");
@@ -87,7 +86,8 @@ public class FoodTruckApp {
 			}
 
 		}
-
+		System.out.println();
+		FoodTruckMenu(ft);
 	}
 
 	public void averageRating(FoodTruck[] ft) {
@@ -96,9 +96,28 @@ public class FoodTruckApp {
 
 		for (int i = 0; i < ft.length; i++) {
 			total = total + ft[i].getRating();
-			int x = i + 1;
+			double x = i + 1;
 			average = total / x;
 		}
-		System.out.println("rating: " + average);
+		System.out.println("Average rating: " + average);
+		System.out.println();
+		FoodTruckMenu(ft);
+		
+	}
+
+	// use if else statement to determine the highest rated truck
+	public void higestRated(FoodTruck[] ft) {
+		double highestRated = ft[0].getRating();
+		int x =0;
+		double lowestRated  = ft[0].getRating();
+		for (int i = 0; i < ft.length; i++) {
+			if (ft[i].getRating() > highestRated) {
+				highestRated = ft[i].getRating();
+			}
+			if (ft[i].getRating()< lowestRated) {
+				lowestRated = ft[i].getRating();
+			}
+		}
+		System.out.println("Highest Rated: " + highestRated);
 	}
 }
