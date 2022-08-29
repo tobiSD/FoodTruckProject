@@ -20,10 +20,7 @@ public class FoodTruckApp {
 	public void run() {
 
 		int MAX_TRUCKS = 2;
-
-		FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; // change to 5
-		int count = 0;
-		ft[count] = new FoodTruck();
+		FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; 
 
 		for (int i = 0; i < ft.length; i++) {
 			ft[i] = new FoodTruck();
@@ -34,7 +31,7 @@ public class FoodTruckApp {
 			ft[i].setName(name);
 
 			if (name == "quit") {
-				// exit
+				System.out.println("You have chosen to quit the app");
 			} else {
 				System.out.print("Enter food type: ");
 				String foodType = kb.next();
@@ -72,24 +69,27 @@ public class FoodTruckApp {
 			case 3:
 				higestRated(ft);
 				break;
+			case 4:
+				quitProgram(ft);
 			default:
 				System.out.println("Error");
 			}
 		}
 	}
 
+	// show user the list of trucks user entered
 	public void listOfTrucks(FoodTruck[] ft) {
 		for (int i = 0; i < ft.length; i++) {
 			if (ft[i] != null) {
 				System.out.println(ft[i].toString());
 				System.out.println();
 			}
-
 		}
 		System.out.println();
 		FoodTruckMenu(ft);
 	}
 
+	// calculate average from the list user entered
 	public void averageRating(FoodTruck[] ft) {
 		double average = 0;
 		double total = 0;
@@ -102,22 +102,28 @@ public class FoodTruckApp {
 		System.out.println("Average rating: " + average);
 		System.out.println();
 		FoodTruckMenu(ft);
-		
+
 	}
 
 	// use if else statement to determine the highest rated truck
+	// ...also used the MAX and MIN to substitute highest rated and lowest rated
 	public void higestRated(FoodTruck[] ft) {
 		double highestRated = ft[0].getRating();
-		int x =0;
-		double lowestRated  = ft[0].getRating();
+		double lowestRated = ft[0].getRating();
 		for (int i = 0; i < ft.length; i++) {
 			if (ft[i].getRating() > highestRated) {
 				highestRated = ft[i].getRating();
 			}
-			if (ft[i].getRating()< lowestRated) {
+			if (ft[i].getRating() < lowestRated) {
 				lowestRated = ft[i].getRating();
 			}
 		}
 		System.out.println("Highest Rated: " + highestRated);
+		System.out.println(ft[0].toString());
+	}
+
+	// end program
+	public void quitProgram(FoodTruck[] ft) {
+		System.out.println("End of program");
 	}
 }

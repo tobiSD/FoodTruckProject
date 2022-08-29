@@ -1,28 +1,38 @@
 package com.skilldistillery.foodtruck.entities;
 
 public class FoodTruck {
-	
-	//private fields
+
+	// private fields
 	private int id;
 	private String name;
 	private String foodType;
 	private int rating;
-	
-	
-	//no arg constructor
+	private int nextTruckId = 1;
+
+	// no arg constructor
 	public FoodTruck() {
-		
+
 	}
-	
-	//Constructor
+
+	// Constructor
 	public FoodTruck(int id, String name, String foodType, int rating) {
-		this.id = id;
+		this.setId(id);
 		this.setName(name);
 		this.setFoodType(foodType);
 		this.setRating(rating);
 	}
 
-	//getters and setters
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+		id = nextTruckId;
+		nextTruckId++;
+	}
+
+	// getters and setters
 	public String getName() {
 		return name;
 	}
@@ -48,7 +58,7 @@ public class FoodTruck {
 	}
 
 	public String toString() {
-		return "Name = "+name+ " " +foodType+ " " + rating;
+		return "ID= " + nextTruckId + " Name = " + name + " Foodtype= " + foodType + " Rating= " + rating;
 	}
-	
+
 }
