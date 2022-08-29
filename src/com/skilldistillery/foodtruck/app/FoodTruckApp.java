@@ -19,8 +19,7 @@ public class FoodTruckApp {
 
 	public void run() {
 
-		int MAX_TRUCKS = 5;
-		FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; 
+		FoodTruck[] ft = new FoodTruck[2];
 
 		for (int i = 0; i < ft.length; i++) {
 			ft[i] = new FoodTruck();
@@ -29,9 +28,9 @@ public class FoodTruckApp {
 			String name = kb.next();
 			FoodTruck truckName = new FoodTruck();
 			ft[i].setName(name);
-
 			if (name.equals("quit")) {
 				FoodTruckMenu(ft);
+
 			} else {
 				System.out.print("Enter food type: ");
 				String foodType = kb.next();
@@ -42,17 +41,17 @@ public class FoodTruckApp {
 				int rating = kb.nextInt();
 				FoodTruck rating1 = new FoodTruck();
 				ft[i].setRating(rating);
-
 			}
 		}
 		FoodTruckMenu(ft);
 	}
 
-	public void FoodTruckMenu(FoodTruck[] ft) {
+	public boolean FoodTruckMenu(FoodTruck[] ft) {
 		if (ft[0] == null) {
 			System.out.println("exit");
 		} else {
 			// see menu
+			System.out.println();
 			System.out.println("Choose form the following options:");
 			System.out.println("1. List of all exisitng foodtrucks");
 			System.out.println("2. See the average rating of food trucks. ");
@@ -74,13 +73,15 @@ public class FoodTruckApp {
 			default:
 				System.out.println("Error");
 			}
+
 		}
+		return FoodTruckMenu(ft);
 	}
 
 	// show user the list of trucks user entered
 	public void listOfTrucks(FoodTruck[] ft) {
 		for (int i = 0; i < ft.length; i++) {
-			if (ft[i] != null) {
+			if (ft != null) {
 				System.out.println(ft[i].toString());
 				System.out.println();
 			}
@@ -93,12 +94,15 @@ public class FoodTruckApp {
 	public void averageRating(FoodTruck[] ft) {
 		double average = 0;
 		double total = 0;
-
-		for (int i = 0; i < ft.length; i++) {
+		double x = 0;
+		int i;
+		for (i = 0; i < ft.length; i++) {
 			total = total + ft[i].getRating();
-			double x = i + 1;
+			x = i + 1;
 			average = total / x;
+
 		}
+
 		System.out.println("Average rating: " + average);
 		System.out.println();
 		FoodTruckMenu(ft);
@@ -120,6 +124,8 @@ public class FoodTruckApp {
 		}
 		System.out.println("Highest Rated: " + highestRated);
 		System.out.println(ft[0].toString());
+		System.out.println();
+		FoodTruckMenu(ft);
 	}
 
 	// end program
