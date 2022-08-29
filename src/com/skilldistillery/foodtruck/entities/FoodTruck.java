@@ -16,10 +16,11 @@ public class FoodTruck {
 
 	// Constructor
 	public FoodTruck(int id, String name, String foodType, int rating) {
-		this.setId(id);
-		this.setName(name);
-		this.setFoodType(foodType);
-		this.setRating(rating);
+		this.id= id;
+		this.name = name;
+		this.foodType = foodType;
+		this.rating = rating;
+		
 	}
 
 	public int getId() {

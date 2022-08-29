@@ -19,7 +19,7 @@ public class FoodTruckApp {
 
 	public void run() {
 
-		FoodTruck[] ft = new FoodTruck[2];
+		FoodTruck[] ft = new FoodTruck[5];
 
 		for (int i = 0; i < ft.length; i++) {
 			ft[i] = new FoodTruck();
