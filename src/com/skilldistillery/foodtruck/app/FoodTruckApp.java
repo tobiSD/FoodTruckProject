@@ -19,7 +19,7 @@ public class FoodTruckApp {
 
 	public void run() {
 
-		int MAX_TRUCKS = 2;
+		int MAX_TRUCKS = 5;
 		FoodTruck[] ft = new FoodTruck[MAX_TRUCKS]; 
 
 		for (int i = 0; i < ft.length; i++) {
@@ -30,8 +30,8 @@ public class FoodTruckApp {
 			FoodTruck truckName = new FoodTruck();
 			ft[i].setName(name);
 
-			if (name == "quit") {
-				System.out.println("You have chosen to quit the app");
+			if (name.equals("quit")) {
+				FoodTruckMenu(ft);
 			} else {
 				System.out.print("Enter food type: ");
 				String foodType = kb.next();
