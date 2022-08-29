@@ -25,7 +25,7 @@ public class FoodTruckApp {
 		for (int i = 0; i < ft.length; i++) {
 			ft[i] = new FoodTruck();
 
-			System.out.print("Enter name of food truck: ");
+			System.out.print("Enter name of food truck or type \"quit\" to stop entering food trucks: ");
 			String name = kb.next();
 			FoodTruck truckName = new FoodTruck();
 			ft[i].setName(name);
